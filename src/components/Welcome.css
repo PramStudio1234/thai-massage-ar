@@ -1,0 +1,84 @@
+.welcome {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 32px 24px 64px;
+  overflow: hidden;
+}
+
+.welcome-bg {
+  position: absolute;
+  inset: -16px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: blur(6px) brightness(0.96); /* ~35% soft blur for background depth */
+  transform: scale(1.04);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.welcome-content { 
+  position: relative;
+  z-index: 10;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: 36px; 
+}
+
+.welcome-logo { 
+  width: clamp(220px, 32vw, 420px); 
+  max-width: 80vw; 
+  max-height: 55svh; 
+  object-fit: contain; 
+  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.32)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2)); 
+  transition: transform 0.3s ease;
+}
+
+.welcome-logo:hover {
+  transform: scale(1.02);
+}
+
+/* Button adapted from Uiverse.io by tirth_5172. */
+.welcome-start {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 34px;
+  max-width: 80vw;
+  background: rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  color: white;
+  font: 600 16px 'Inter', 'Noto Sans Thai', sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform .3s ease-in-out, background .3s ease, box-shadow .3s ease;
+}
+.welcome-start:hover {
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.welcome-start:focus-visible { outline: 2px solid white; outline-offset: 4px; }
+.welcome-start:active { transform: scale(.98); }
+.welcome-start-label { position: relative; z-index: 20; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65); }
+.welcome-start-shine { position: absolute; left: -75%; top: 0; height: 100%; width: 50%; background: #ffffff33; transform: rotate(12deg); z-index: 10; filter: blur(16px); transition: left 1s ease-in-out; }
+.welcome-start:is(:hover, :focus-visible) .welcome-start-shine { left: 125%; }
+.welcome-start-edge { position: absolute; display: block; width: 50%; border-color: #d4edf9; border-style: solid; border-width: 0; filter: drop-shadow(0 0 8px #d4edf980); transition: height .3s ease-in-out; pointer-events: none; }
+.edge-top-left { height: 20%; border-left-width: 2px; border-top-width: 2px; border-top-left-radius: 8px; top: 0; left: 0; }
+.edge-top-right { height: 60%; border-right-width: 2px; border-top-width: 2px; border-top-right-radius: 8px; top: 0; right: 0; }
+.edge-bottom-left { height: 60%; border-left-width: 2px; border-bottom-width: 2px; border-bottom-left-radius: 8px; bottom: 0; left: 0; }
+.edge-bottom-right { height: 20%; border-right-width: 2px; border-bottom-width: 2px; border-bottom-right-radius: 8px; bottom: 0; right: 0; }
+.welcome-start:is(:hover, :focus-visible) :is(.edge-top-right, .edge-bottom-left) { height: 90%; }
+@media (prefers-reduced-motion: reduce) {
+  .welcome-start, .welcome-start-shine, .welcome-start-edge { transition: none; }
+}

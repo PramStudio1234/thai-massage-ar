@@ -1,0 +1,36 @@
+/* From Uiverse.io by elijahgummer; scoped and sized for shared app loading states. */
+.loading-hole {
+  --loading-color: 2, 132, 199;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  vertical-align: middle;
+}
+.loading-hole--large { width: 110px; height: 110px; }
+.loading-hole--white { --loading-color: 255, 255, 255; }
+.loading-hole__rings { display: flex; align-items: center; justify-content: center; }
+.loading-hole i {
+  display: block;
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  border: 1px solid rgba(var(--loading-color), .8);
+  border-radius: 140px;
+  opacity: 0;
+  animation: loading-hole-scale 3s linear infinite;
+  animation-delay: var(--ring-delay);
+}
+.loading-hole--large i { width: 50px; height: 50px; }
+@keyframes loading-hole-scale {
+  0% { transform: scale(2); opacity: 0; box-shadow: 0 0 50px rgba(var(--loading-color), .5); }
+  50% { transform: scale(1) translate(0, -5px); opacity: 1; box-shadow: 0 8px 20px rgba(var(--loading-color), .5); }
+  100% { transform: scale(.1) translate(0, 5px); opacity: 0; box-shadow: 0 10px 20px rgba(var(--loading-color), 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loading-hole i { animation: none; }
+  .loading-hole i:first-child { opacity: 1; }
+}

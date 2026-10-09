@@ -1,0 +1,67 @@
+/* Jelly buttons adapted from Uiverse.io by vinodjangid07. */
+.workspace-shell .jelly-button {
+  --jelly-top: #ffc8df;
+  --jelly-bottom: #d83c83;
+  position: relative;
+  border: 1px solid #ffffff55;
+  border-radius: 45px;
+  background: #ec74a7;
+  color: white;
+  box-shadow: inset 0 8px 10px var(--jelly-top), 0 5px 10px #05050524, inset 0 -8px 10px var(--jelly-bottom);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 12px 20px;
+  font-weight: 600;
+  transition: box-shadow .2s ease;
+}
+.workspace-shell .jelly-button::before,
+.workspace-shell .jelly-button::after {
+  content: '';
+  position: absolute;
+  width: 65%;
+  height: 2px;
+  border-radius: 50%;
+  background: #ffffffad;
+  filter: blur(1px);
+  pointer-events: none;
+}
+.workspace-shell .jelly-button::before { top: 6px; }
+.workspace-shell .jelly-button::after { bottom: 6px; opacity: .25; }
+.workspace-shell .jelly-button-secondary,
+.workspace-shell .jelly-button[class~="bg-emerald-50"],
+.workspace-shell .jelly-button[class~="bg-cyan-50"],
+.workspace-shell .jelly-button[class~="bg-amber-50"] {
+  --jelly-top: #fff5f9;
+  --jelly-bottom: #e9b4cd;
+  background: #f8dce9;
+  color: #793b59;
+}
+.workspace-shell .jelly-button-danger {
+  --jelly-top: #ffd6df;
+  --jelly-bottom: #cc526c;
+  background: #d96683;
+  color: #fff;
+}
+.workspace-shell .jelly-button-icon { min-width: 40px; padding: 10px; }
+.workspace-shell .jelly-button svg { color: inherit; }
+.workspace-shell .jelly-button:focus-visible { outline: 3px solid #b0396c; outline-offset: 4px; }
+.workspace-shell .jelly-button:disabled { opacity: .5; cursor: not-allowed; animation: none; }
+.workspace-shell .jelly-button:active { transform: scale(.98); }
+@media (hover: hover) {
+  .workspace-shell .jelly-button:hover:not(:disabled) { animation: jelly-horizontal .9s both; }
+}
+@keyframes jelly-horizontal {
+  0%, 100% { transform: scale3d(1, 1, 1); }
+  30% { transform: scale3d(1.12, .88, 1); }
+  40% { transform: scale3d(.90, 1.10, 1); }
+  50% { transform: scale3d(1.08, .92, 1); }
+  65% { transform: scale3d(.96, 1.04, 1); }
+  75% { transform: scale3d(1.04, .96, 1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .workspace-shell .jelly-button { transition: none; }
+  .workspace-shell .jelly-button:hover { animation: none; }
+}

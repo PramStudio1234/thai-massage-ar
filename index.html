@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="th" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Klay Klaai | Thai Massage & Wellness AR Training Platform</title>
+    
+    <!-- Camera models load on demand in ARSimulator; the UI uses bundled assets. -->
+
+    <style>
+      /* Smooth transitions & custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgba(241, 245, 249, 0.5);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 9999px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+      
+      /* Infrared Thermal Filter overlay mode */
+      .infrared-filter {
+        filter: contrast(180%) saturate(220%) hue-rotate(180deg) brightness(95%);
+      }
+      .hologram-grid {
+        background-size: 30px 30px;
+        background-image: 
+          linear-gradient(to right, rgba(16, 185, 129, 0.08) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(16, 185, 129, 0.08) 1px, transparent 1px);
+      }
+    </style>
+  </head>
+  <body class="h-full bg-white text-slate-900 font-sans antialiased selection:bg-wellness-500 selection:text-white">
+    <div id="root" class="h-full flex flex-col"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

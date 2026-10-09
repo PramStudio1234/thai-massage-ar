@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #ffffff;
+    --surface: #f8fafc;
+    --surface-card: #ffffff;
+    --ink: #182c25;
+    --muted: #64748b;
+    --green: #198162;
+    --green-glow: #10b981;
+    --mint: #d1fae5;
+    --line: #e2e8f0;
+    --orange: #f59e0b;
+  }
+
+  html, body, #root {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.spinning {
+  animation: spin 1.2s linear infinite;
+}
+
+/* SENSA Infrared & Camera Surface Filters */
+.infrared {
+  filter: grayscale(1) sepia(1) hue-rotate(75deg) saturate(3.2) contrast(1.3) !important;
+}
+
+.camera-surface {
+  position: relative;
+  border: 1px solid rgba(52, 95, 81, 0.6);
+  border-radius: 16px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 45%, #193f32 0%, #0d241c 65%, #081611 100%);
+  touch-action: none;
+}
+
+.camera-overlay-top {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  color: #a5d6ed;
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Technical Corner Reticles */
+.corner {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  border-color: rgba(146, 195, 169, 0.5);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 20;
+}
+.corner.top-left { top: 44px; left: 20px; border-width: 2px 0 0 2px; }
+.corner.top-right { top: 44px; right: 20px; border-width: 2px 2px 0 0; }
+.corner.bottom-left { bottom: 20px; left: 20px; border-width: 0 0 2px 2px; }
+.corner.bottom-right { bottom: 20px; right: 20px; border-width: 0 2px 2px 0; }
+
+/* Tracking Status Floating Pill */
+.tracking-status {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 25;
+  color: #d9d2b4;
+  background: rgba(16, 36, 28, 0.92);
+  border: 1px solid rgba(85, 112, 93, 0.5);
+  border-radius: 9999px;
+  font-size: 13px;
+  padding: 8px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.tracking-status.valid {
+  color: #7dd3fc;
+  border-color: rgba(16, 185, 129, 0.6);
+  background: rgba(13, 46, 34, 0.95);
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f59e0b;
+  flex-shrink: 0;
+}
+
+.tracking-status.valid .status-indicator {
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+/* Conic Timer Ring */
+.timer-ring-container {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  padding: 8px;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.timer-ring-inner {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Orbits in Welcome Banner */
+.orbit {
+  position: absolute;
+  border: 1px solid rgba(136, 189, 152, 0.15);
+  border-radius: 50%;
+  width: 320px;
+  height: 320px;
+  top: 15px;
+  left: calc(50% - 160px);
+  pointer-events: none;
+}
+.orbit.two {
+  width: 410px;
+  height: 410px;
+  top: -30px;
+  left: calc(50% - 205px);
+}

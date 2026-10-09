@@ -1,0 +1,98 @@
+.workspace-shell {
+  --workspace-panel: rgba(255, 255, 255, .9);
+  --workspace-border: rgba(255, 255, 255, .8);
+  /* From Uiverse.io by adamgiebl: rounded cards with inset and layered shadows. */
+  --workspace-shadow: inset 0 1px 3px rgba(255, 255, 255, .85), rgba(0, 0, 0, .04) 0 -23px 25px 0 inset, rgba(0, 0, 0, .03) 0 -36px 30px 0 inset, rgba(0, 0, 0, .02) 0 -79px 40px 0 inset, rgba(0, 0, 0, .06) 0 2px 1px, rgba(0, 0, 0, .09) 0 4px 2px, rgba(0, 0, 0, .09) 0 8px 4px, rgba(0, 0, 0, .09) 0 16px 8px, rgba(0, 0, 0, .09) 0 32px 16px;
+  background-color: #fae9d9;
+  position: relative;
+  isolation: isolate;
+}
+.workspace-shell::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  background-image: linear-gradient(#ffffff20, #ffffff20), var(--workspace-background);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* A soft blur on the locked background layer; content scales and text stays sharp */
+  filter: blur(1.5px);
+  transform: translateZ(0);
+  will-change: transform;
+}
+.workspace-shell .workspace-content {
+  padding-top: 14px;
+  padding-bottom: 20px;
+}
+.workspace-shell > header,
+.workspace-shell > footer {
+  background: rgba(255, 255, 255, .72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: var(--workspace-border);
+  box-shadow: 0 2px 14px rgba(89, 57, 32, .08);
+}
+.workspace-shell .workspace-panel,
+.workspace-shell .workspace-heading,
+.workspace-shell .workspace-tabs {
+  background-color: var(--workspace-panel);
+  background-image: none;
+  border-radius: 16px;
+  border-color: var(--workspace-border);
+  box-shadow: var(--workspace-shadow);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.workspace-shell .workspace-panel .workspace-panel { border-radius: 12px; background-color: var(--workspace-panel); }
+.workspace-shell .workspace-panel.ring-2 { border-color: #059669; }
+.workspace-shell .workspace-heading {
+  border: 1px solid var(--workspace-border);
+  border-radius: 16px;
+  padding: 14px 20px;
+  box-shadow: var(--workspace-shadow);
+}
+.workspace-shell .workspace-tabs {
+  border: 1px solid var(--workspace-border);
+  border-radius: 16px;
+  padding: 8px 16px 0;
+  box-shadow: var(--workspace-shadow);
+}
+/* Compact versions for selectable frames. */
+.workspace-shell .workspace-choice {
+  background: var(--workspace-panel);
+  border-radius: 12px;
+  border-color: var(--workspace-border);
+  box-shadow: var(--workspace-shadow);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.workspace-shell .workspace-choice.ring-2 { border-color: #df8eaa; background: rgba(255, 205, 224, .62); }
+.workspace-shell .workspace-tabs button { border-radius: 12px 12px 0 0; padding-inline: 12px; }
+.workspace-shell .workspace-tabs button:hover { background: #ffffff50; }
+.workspace-shell .region-card:focus-visible { outline: 3px solid #c84c82; outline-offset: 4px; }
+.workspace-shell .workspace-panel.region-card.is-selected {
+  background-color: rgba(255, 205, 224, .62);
+  background-image: none;
+  border-color: #d65c90;
+  box-shadow: var(--workspace-shadow), 0 0 0 2px rgba(214, 92, 144, .24);
+}
+.workspace-shell .region-card.is-selected .region-accent { color: #a02b59; }
+.workspace-shell .region-card.is-selected .region-thumbnail { background: #ffe4efa8; border-color: #eda7c3; }
+.workspace-shell .region-card.is-selected .region-card-footer { border-color: #eda7c3; }
+.workspace-shell .region-card.is-selected .region-arrow { background: #db5790; border-color: #db5790; color: white; }
+@media (max-width: 640px) {
+  .workspace-shell .workspace-panel,
+  .workspace-shell .workspace-heading,
+  .workspace-shell .workspace-tabs { border-radius: 14px; }
+  .workspace-shell .workspace-content { padding-top: 16px; padding-bottom: 16px; }
+  .workspace-shell .workspace-heading { padding: 16px; }
+  .workspace-shell .workspace-tabs { padding: 12px 12px 0; }
+}
